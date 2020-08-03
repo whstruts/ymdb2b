@@ -1,0 +1,92 @@
+.el-table__header {
+  thead {
+    color: #333;
+    tr {
+      th {
+        padding: 3px 0px;
+        background: #F0F0F0;
+      }
+    }
+  }
+}
+
+.el-table td, .el-table th {
+  padding: 10px 0px;
+}
+
+.el-table td, .el-table th.is-leaf {
+  border-bottom: 1px solid #DEDEDE;
+}
+
+.el-table--border td, .el-table--border th, .el-table__body-wrapper .el-table--border.is-scrolling-left ~ .el-table__fixed {
+  border-right: 1px solid #DEDEDE;
+}
+
+.el-table--border::after, .el-table--group::after, .el-table::before {
+  background-color: #DEDEDE
+}
+
+.el-table--border, .el-table--group {
+  border-top: 1px solid #DEDEDE;
+}
+
+.el-checkbox__input.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+  background-color: #0680FD;
+  border-color: #0680FD;
+}
+
+.el-checkbox__inner:hover {
+  border-color: #0680FD;
+}
+
+.el-checkbox__input.is-checked + .el-checkbox__label {
+  color: #0680FD;
+}
+
+//主按钮背景色
+.el-button--primary {
+  background-color: #0680FD;
+  border-color: #0680FD;
+}
+
+.el-button--primary:focus, .el-button--primary:hover {
+  background-color: #0680FD;
+  border-color: #0680FD;
+}
+
+//单选框的颜色
+.el-radio__input.is-checked .el-radio__inner {
+  border-color: #0680FD;
+  background: #0680FD;
+}
+
+.el-radio__input.is-checked + .el-radio__label {
+  color: #333;
+}
+
+//分页的样式
+.setting_pagination {
+  padding: 15px 0px;
+  text-align: right;
+  .btn-next, .btn-prev, .el-pager li {
+    background-color: #ececec !important;
+    border-radius: 5px !important;
+    border: solid 1px #dfdfdf !important;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+  }
+  .el-pager li {
+
+  }
+  .el-pager .active {
+    background-color: #0680FD !important;
+  }
+}
+
+.my_table {
+  td {
+    vertical-align: top;
+  }
+}
