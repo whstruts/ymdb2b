@@ -72,6 +72,7 @@
                 {{item.specifications}}/{{item.manufacturer }}</p>
               <p class="pro-store">{{item.supplierName}}</p>
               <p class="pro-activity" style="display: none"><span class="zk">领券87折</span><span class="mj">满减</span></p>
+              <p><span class="label-pm">限购</span></p>
             </div>
           </el-col>
           <el-col :span="4">
@@ -92,6 +93,9 @@
                                :disabled="item.commodityStatus!=0"></el-input-number>
               <p><span class="commodity_package">中/大包装：{{item.mediumPackage }}/{{item.largePackage }}</span>
                 <span class="package_instruction">{{item.isRetail==0?'不可拆零':item.isRetail==1?'可拆零':'无'}}</span>
+              </p>
+              <p>
+                <span class="label-pm-c">（限购10盒）</span>
               </p>
             </div>
           </el-col>
@@ -688,6 +692,15 @@
       color: #666666;
       font-size: 12px;
     }
+  }
+  .label-pm {
+    background-color: red;
+    color: white;
+    font-size:12px;
+    font-weight:normal;
+  }
+  .label-pm-c {
+    text-align: center;
   }
 
 </style>
