@@ -72,7 +72,7 @@
                 {{item.specifications}}/{{item.manufacturer }}</p>
               <p class="pro-store">{{item.supplierName}}</p>
               <p class="pro-activity" style="display: none"><span class="zk">领券87折</span><span class="mj">满减</span></p>
-              <p><span class="label-pm">限购</span></p>
+              <p v-if="isPurchaseManager(item)"><span class="label-pm">限购</span></p>
             </div>
           </el-col>
           <el-col :span="4">
@@ -94,8 +94,8 @@
               <p><span class="commodity_package">中/大包装：{{item.mediumPackage }}/{{item.largePackage }}</span>
                 <span class="package_instruction">{{item.isRetail==0?'不可拆零':item.isRetail==1?'可拆零':'无'}}</span>
               </p>
-              <p>
-                <span class="label-pm-c">（限购10盒）</span>
+              <p class="label-pm-c">
+                <span>（限购10盒）</span>
               </p>
             </div>
           </el-col>
@@ -417,6 +417,11 @@
         }
       }
       ,
+      isPurchaseManager(item){
+        return item.startDate != '' && item.startDate != null
+          && Date.parse(item.startDate) < new Date()
+          && Date.parse(item.endDate) > new Date()
+      },
     },
     mounted() {
       window.addEventListener('scroll', this.handleScroll)
@@ -700,7 +705,8 @@
     font-weight:normal;
   }
   .label-pm-c {
-    text-align: center;
+    text-align: left;
+    margin-left: 50px;
   }
 
 </style>
