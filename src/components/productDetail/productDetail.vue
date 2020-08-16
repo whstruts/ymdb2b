@@ -75,7 +75,7 @@
           <div class="opr">
             <el-input-number v-model="addNum"
                              :min="form.isRetail==0?form.largePackage:form.isRetail==1?form.mediumPackage:1"
-                             :max="form.repertory"
+                             :max="isPurchaseManager()?form.maxNum:form.repertory"
                              :step="form.isRetail==0?form.largePackage:form.isRetail==1?form.mediumPackage:1"
                              size="small" class="reset-input-number" step-strictly ></el-input-number>
             <span class="store">库存：{{form.repertory}}</span>
@@ -385,6 +385,11 @@
       }
     },
     methods: {
+      isPurchaseManagerI(item){
+        return item.startDate != '' && item.startDate != null
+          && Date.parse(item.startDate) < new Date()
+          && Date.parse(item.endDate) > new Date()
+      },
       getProductInfo(commodityId) {
         this.loading = true;
         API.productInfo({commodityId: commodityId}).then((res) => {
@@ -632,7 +637,7 @@
         return this.form.startDate != '' && this.form.startDate != null
           && Date.parse(this.form.startDate) < new Date()
           && Date.parse(this.form.endDate) > new Date()
-      }
+      },
     }
   }
 </script>
