@@ -43,8 +43,11 @@
             <div class="price nosee" v-if="form.commodityStatus == 1">无采购权限</div>
           </template>
           <div class="p-detail-list">
-            <p>
-              <span class="font_pm">限购</span><span class="label-pm">该商品2盒起购,限购5盒,活动时间截止2020-12-21</span><span style="font-size: 12px"></span>
+            <p v-if="form.startDate != '' && form.startDate != null">
+              <span class="font_pm" >限购</span>
+              <span class="label-pm">该商品{{form.minNum}}{{form.packageUnit}}起购,
+                限购{{form.maxNum}}{{form.packageUnit}},
+                活动时间截止{{form.endDate}}</span>
             </p>
             <div class="item1">
               <p>
