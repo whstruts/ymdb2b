@@ -94,8 +94,9 @@
               <p><span class="commodity_package">中/大包装：{{item.mediumPackage }}/{{item.largePackage }}</span>
                 <span class="package_instruction">{{item.isRetail==0?'不可拆零':item.isRetail==1?'可拆零':'无'}}</span>
               </p>
-              <p class="label-pm-c">
-                <span>（限购{{item.maxNum}}盒）</span>
+              <p>
+                <span v-if="item.commodityNumber <= item.maxNum" class="label-pm-c">（限购{{item.maxNum}}盒）</span>
+                <span v-else class="label-pm">超过限制购买最大量</span>
               </p>
             </div>
           </el-col>
