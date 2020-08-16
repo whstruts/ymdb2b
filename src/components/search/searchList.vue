@@ -55,6 +55,7 @@
               <p class="pro-name">{{item.drugName}}<span v-if="item.drugName">&nbsp;&nbsp;</span>{{item.drugCommonName}}</p>
               <p class="pro-company">{{item.specifications}}/{{item.manufacturer}}</p>
               <p class="pro-store">{{item.supplierName}}</p>
+              <p v-if="isPurchaseManager(item)"><span class="label-pm">限购</span></p>
               <!-- <p class="pro-activity"><span class="zk">领券87折</span><span class="mj">满减</span></p> -->
             </div>
             <div class="content content2">
@@ -447,6 +448,11 @@
       handleCurrentChange(val) {
         this.table.page = val;
         this.funcUrlAdd('page', val);
+      },
+      isPurchaseManager(item){
+        return item.startDate != '' && item.startDate != null
+          && Date.parse(item.startDate) < new Date()
+          && Date.parse(item.endDate) > new Date()
       },
       handleSearch() {
         let params = JSON.parse(JSON.stringify(this.$route.query));
@@ -1009,5 +1015,11 @@
         }
       }
     }
+  }
+  .label-pm {
+    background-color: red;
+    color: white;
+    font-size:12px;
+    font-weight:normal;
   }
 </style>
