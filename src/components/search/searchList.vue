@@ -87,7 +87,8 @@
             </div>
           </div>
           <div class="opr">
-            <el-input-number v-model="item.num" :min="item.isRetail==0?item.largePackage:item.isRetail==1?item.mediumPackage:1" :max="item.repertory" :step="item.isRetail==0?item.largePackage:item.isRetail==1?item.mediumPackage:1" size="mini"
+            <el-input-number v-model="item.num" :min="item.isRetail==0?item.largePackage:item.isRetail==1?item.mediumPackage:1"
+                             :max="isPurchaseManagerI(item)?item.maxNum:item.repertory" :step="item.isRetail==0?item.largePackage:item.isRetail==1?item.mediumPackage:1" size="mini"
                              class="reset-input-number" step-strictly></el-input-number>
             <p>
               <el-button type="primary" class="btn-add-cart" style="width:173px" :disabled="isLogin !=1 && isLogin != -1 || item.commodityStatus == 1 || item.commodityStatus == 2" :loading="item.btnLoading" @click.stop=addCart(item,index)>加入购物车</el-button>
@@ -232,6 +233,11 @@
 
     },
     methods: {
+      isPurchaseManagerI(item){
+        return item.startDate != '' && item.startDate != null
+          && Date.parse(item.startDate) < new Date()
+          && Date.parse(item.endDate) > new Date()
+      },
       // 动态添加url参数
       funcUrlAdd(params, val) {
         let query = this.$route.query;

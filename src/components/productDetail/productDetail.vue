@@ -385,11 +385,11 @@
       }
     },
     methods: {
-      isPurchaseManagerI(item){
-        return item.startDate != '' && item.startDate != null
-          && Date.parse(item.startDate) < new Date()
-          && Date.parse(item.endDate) > new Date()
-      },
+      // isPurchaseManagerI(item){
+      //   return item.startDate != '' && item.startDate != null
+      //     && Date.parse(item.startDate) < new Date()
+      //     && Date.parse(item.endDate) > new Date()
+      // },
       getProductInfo(commodityId) {
         this.loading = true;
         API.productInfo({commodityId: commodityId}).then((res) => {
