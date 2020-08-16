@@ -43,6 +43,9 @@
             <div class="price nosee" v-if="form.commodityStatus == 1">无采购权限</div>
           </template>
           <div class="p-detail-list">
+            <p>
+              <span class="font_pm">限购</span><span class="label-pm">该商品2盒起购,限购5盒,活动时间截止2020-12-21</span><span style="font-size: 12px"></span>
+            </p>
             <div class="item1">
               <p>
                 <span class="label">建议零售价</span><span style="font-size: 12px"></span>
@@ -1080,5 +1083,17 @@
 
   .el-tooltip__popper {
     width: 270px;
+  }
+  .font_pm{
+    margin-left: 10px;
+    color: #FF0000;
+    border:1px solid #FF0000;
+    padding: 2px;
+    border-radius: 3px;
+  }
+  .label-pm {
+    margin-left: 10px;
+    text-align: left;
+    color: #FF0000;
   }
 </style>
