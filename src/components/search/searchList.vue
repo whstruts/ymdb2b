@@ -55,7 +55,7 @@
               <p class="pro-name">{{item.drugName}}<span v-if="item.drugName">&nbsp;&nbsp;</span>{{item.drugCommonName}}</p>
               <p class="pro-company">{{item.specifications}}/{{item.manufacturer}}</p>
               <p class="pro-store">{{item.supplierName}}</p>
-              <p v-if="isPurchaseManager(item)"><span class="label-pm">限购</span></p>
+              <p v-if="isPurchaseManager(item)"><span class="label-pm-s">限购</span></p>
               <!-- <p class="pro-activity"><span class="zk">领券87折</span><span class="mj">满减</span></p> -->
             </div>
             <div class="content content2">
@@ -1022,7 +1022,7 @@
       }
     }
   }
-  .label-pm {
+  .label-pm-s {
     background-color: red;
     color: white;
     font-size:12px;

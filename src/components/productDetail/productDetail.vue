@@ -385,11 +385,6 @@
       }
     },
     methods: {
-      // isPurchaseManagerI(item){
-      //   return item.startDate != '' && item.startDate != null
-      //     && Date.parse(item.startDate) < new Date()
-      //     && Date.parse(item.endDate) > new Date()
-      // },
       getProductInfo(commodityId) {
         this.loading = true;
         API.productInfo({commodityId: commodityId}).then((res) => {
@@ -1109,5 +1104,6 @@
   .label-pm {
     margin-left: 10px;
     text-align: left;
+    color: #FF0000;
   }
 </style>
