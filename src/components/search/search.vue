@@ -195,7 +195,12 @@
           prop="repertory"
           label="中/大包装" width="180px">
           <template slot-scope="scope">
-            <p class="size">{{scope.row.mediumPackage}}/{{scope.row.largePackage}} <span>{{scope.row.isRetail==0?'不可拆零':scope.row.isRetail==1?'可拆零':'无'}}</span></p>
+            <p class="size">{{scope.row.mediumPackage}}/{{scope.row.largePackage}}
+              <span>{{scope.row.isRetail==0?'不可拆零':scope.row.isRetail==1?'可拆零':'无'}}</span>
+              <span v-if="scope.row.startDate != '' && scope.row.startDate != null
+          && Date.parse(scope.row.startDate) < new Date()
+          && Date.parse(scope.row.endDate) > new Date()" class="label-pm">限购</span>
+            </p>
           </template>
         </el-table-column>
         <el-table-column
@@ -219,7 +224,6 @@
           :page-size="dialogTable.limit"
           ></el-pagination>
         <el-button type="primary" size="mini" plain>确 定</el-button>
-        </el-pagination>
       </div>
       <div slot="footer" class="dialog-footer" style="height: 46px">
       </div>
@@ -1317,5 +1321,11 @@
       }
     }
 
+  }
+  .label-pm {
+    background-color: red;
+    color: white;
+    font-size:12px;
+    font-weight:normal;
   }
 </style>
