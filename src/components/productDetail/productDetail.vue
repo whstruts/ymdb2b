@@ -43,7 +43,7 @@
             <div class="price nosee" v-if="form.commodityStatus == 1">无采购权限</div>
           </template>
           <div class="p-detail-list">
-            <p v-if="form.startDate != '' && form.startDate != null">
+            <p v-if="form.startDate != '' && form.startDate != null && Date.parse(form.startDate) < new Date() && Date.parse(form.endDate) > new Date()">
               <span class="font_pm" >限购</span>
               <span class="label-pm">该商品{{form.minNum}}{{form.packageUnit}}起购,
                 限购{{form.maxNum}}{{form.packageUnit}},
