@@ -95,7 +95,7 @@
                 <span class="package_instruction">{{item.isRetail==0?'不可拆零':item.isRetail==1?'可拆零':'无'}}</span>
               </p>
               <p class="label-pm-c">
-                <span>（限购10盒）</span>
+                <span>（限购{{item.maxNum}}盒）</span>
               </p>
             </div>
           </el-col>
@@ -369,6 +369,7 @@
             this.calculateTheTotalAmount();
           } else {
             this.$message.error(res.msg)
+            item.commodityNumber=item.commodityNumber-(item.isRetail==1?item.mediumPackage:item.largePackage)
           }
         })
 
