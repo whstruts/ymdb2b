@@ -43,7 +43,7 @@
             <div class="price nosee" v-if="form.commodityStatus == 1">无采购权限</div>
           </template>
           <div class="p-detail-list">
-            <p v-if="form.startDate != '' && form.startDate != null && Date.parse(form.startDate) < new Date() && Date.parse(form.endDate) > new Date()">
+            <p v-if="isPurchaseManager()">
               <span class="font_pm" >限购</span>
               <span class="label-pm">该商品{{form.minNum}}{{form.packageUnit}}起购,
                 限购{{form.maxNum}}{{form.packageUnit}},
@@ -79,6 +79,8 @@
                              :step="form.isRetail==0?form.largePackage:form.isRetail==1?form.mediumPackage:1"
                              size="small" class="reset-input-number" step-strictly ></el-input-number>
             <span class="store">库存：{{form.repertory}}</span>
+            <span class="label-pm" v-if="isPurchaseManager()&& this.addNum < this.form.minNum">数量低于限购下限：{{this.form.minNum}}</span>
+            <span class="label-pm" v-if="isPurchaseManager()&& this.addNum > this.form.maxNum">数量高于限购上限：{{this.form.maxNum}}</span>
             <p>
               <transition name="drop"
                           @before-enter="beforeEnter"
@@ -625,6 +627,11 @@
       },
       afterEnter(el) {
         this.addShow = false;
+      },
+      isPurchaseManager(){
+        return this.form.startDate != '' && this.form.startDate != null
+          && Date.parse(this.form.startDate) < new Date()
+          && Date.parse(this.form.endDate) > new Date()
       }
     }
   }
