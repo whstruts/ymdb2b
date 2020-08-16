@@ -1109,6 +1109,5 @@
   .label-pm {
     margin-left: 10px;
     text-align: left;
-    color: #FF0000;
   }
 </style>
